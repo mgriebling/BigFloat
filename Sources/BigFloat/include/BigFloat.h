@@ -49,6 +49,8 @@ typedef NS_ENUM(unsigned int, BFTrigMode)
 	BF_gradians
 };
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BigFloat : NSObject <NSCopying, NSCoding>
 {
 @protected
@@ -79,7 +81,7 @@ typedef NS_ENUM(unsigned int, BFTrigMode)
 
 - (instancetype)initWithCoder:(NSCoder *)coder;
 - (void)encodeWithCoder:(NSCoder *)coder;
-- (id)copyWithZone:(NSZone*)zone;
+- (id)copyWithZone:(NSZone* _Nullable)zone;
 
 + (BigFloat*)bigFloatWithString:(NSString *)newValue radix:(unsigned short)newRadix;
 + (BigFloat*)bigFloatWithInt:(signed int)newValue radix:(unsigned short)newRadix;
@@ -148,9 +150,11 @@ typedef NS_ENUM(unsigned int, BFTrigMode)
 @property (nonatomic, readonly, copy) NSString *exponentString;
 @property (nonatomic, readonly, copy) NSString *toString;
 - (NSString*)toShortString:(int)precision;
-- (void)limitedString:(unsigned int)lengthLimit fixedPlaces:(unsigned int)places fillLimit:(BOOL)fill complement:(unsigned int)complement mantissa:(NSString**)mantissaOut exponent:(NSString**)exponentOut;
+- (void)limitedString:(unsigned int)lengthLimit fixedPlaces:(unsigned int)places fillLimit:(BOOL)fill complement:(unsigned int)complement mantissa:(NSString*_Nonnull*_Nonnull)mantissaOut exponent:(NSString*_Nonnull*_Nonnull)exponentOut;
 - (void)debugDisplay;
 
 @end
+
+NS_ASSUME_NONNULL_END
 
 #include "BigCFloat.h"

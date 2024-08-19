@@ -19,6 +19,8 @@
 // Taylor Series for trigonometric functions. 
 //
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface BigCFloat : BigFloat {
 	BigFloat	*bcf_imaginary;
 	BOOL		bcf_has_imaginary;
@@ -35,7 +37,7 @@
 
 - (instancetype)initWithCoder:(NSCoder *)coder;
 - (void)encodeWithCoder:(NSCoder *)coder;
-- (id)copyWithZone:(NSZone*)zone;
+- (id)copyWithZone:(NSZone* _Nullable)zone;
 
 + (BigCFloat*)bigFloatWithReal:(BigFloat *)realPart imaginary:(BigFloat *)imaginaryPart;
 + (BigCFloat*)bigFloatWithMagnitude:(BigFloat *)r angle:(BigFloat *)theta;
@@ -113,7 +115,9 @@
 @property (nonatomic, readonly, copy) NSString *imaginaryExponentString;
 @property (nonatomic, readonly, copy) NSString *toString;
 - (NSString*)toShortString:(int)precision;
-- (void)limitedString:(unsigned int)lengthLimit fixedPlaces:(unsigned int)places fillLimit:(BOOL)fill complement:(unsigned int)complement mantissa:(NSString**)mantissaOut exponent:(NSString**)exponentOut imaginaryMantissa:(NSString**)imaginaryMantissaOut imaginaryExponent:(NSString**)imaginaryExponentOut;
+- (void)limitedString:(unsigned int)lengthLimit fixedPlaces:(unsigned int)places fillLimit:(BOOL)fill complement:(unsigned int)complement mantissa:(NSString*_Nonnull*_Nonnull)mantissaOut exponent:(NSString*_Nonnull*_Nonnull)exponentOut imaginaryMantissa:(NSString*_Nonnull*_Nonnull)imaginaryMantissaOut imaginaryExponent:(NSString*_Nonnull*_Nonnull)imaginaryExponentOut;
 - (void)debugDisplay;
 
 @end
+
+NS_ASSUME_NONNULL_END
